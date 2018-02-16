@@ -116,7 +116,7 @@ public:
     }
     template<class T, class F, class... FArgs>
     void connect(T *obj, void (F::*func)(FArgs...)) {
-        static_assert(std::is_base_of<F, T>::value);
+        static_assert(std::is_base_of<F, T>::value, "no good");
         m_slots.push_back([obj, func](const Args &... args) {
             (obj->*func)(args...);
         });
